@@ -37,25 +37,57 @@ export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
 
 export const db = getFirestore();
 
-export const createUserDocumentFromAuth = async (userAuth) => {
-
+export const createUserDocumentFromAuth = async (userAuth, addionalInformation = {}) => {
     if(!userAuth) return;
 
-    const userDocRef = doc(db, "users", userAuth.uid)
+    //Mark: Email and Password Fix: missing uid
+    const getUid= (authobject) => {
 
+        if(!authobject.uid){
+            const {displayName, email, uid} = authobject.user;
+            return {displayName, email, uid}
+        }
+        else{
+            const {displayName,email ,uid} = authobject;
+            return {displayName,email ,uid}
+        }
+        
+    }
+
+    const userDocRef = doc(db, "users", getUid(userAuth).uid)
 
     const userSnapshot = await getDoc(userDocRef);
 
-
-
     if(!userSnapshot.exists()){
-        const {displayName, email} = userAuth;
-        const createdAT = new Date();
+        
+        //Mark: Create user with email and password: had to deconstruct "userAuth" further
+        if(!userAuth.uid){
+            
+            const {displayName, email} = userAuth.user;
+   
+            const createdAT = new Date();
+    
+    
+            try {
+                await setDoc(userDocRef, {displayName, email, createdAT, ...addionalInformation});
+            } catch (error){
+                console.log("Erorr creating the user", error.message);
+            }
 
-        try {
-            await setDoc(userDocRef, {displayName, email, createdAT});
-        } catch (error){
-            console.log("Erorr creating the user", error.message);
+        }
+        
+        //Yihua: Create use with google log in if use doesnt exists in the database
+        else{
+            const {displayName, email} = userAuth;
+    
+            const createdAT = new Date();
+
+
+            try {
+                await setDoc(userDocRef, {displayName, email, createdAT, ...addionalInformation});
+            } catch (error){
+                console.log("Erorr creating the user", error.message);
+            }
         }
     }
 
