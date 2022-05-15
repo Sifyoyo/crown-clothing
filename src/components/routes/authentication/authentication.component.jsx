@@ -1,11 +1,12 @@
 import SignUpForm from "../../sign-up-form/sign-up-form.component";
-import { useEffect } from "react";
+//import { useEffect } from "react";
 //import { getRedirectResult } from "firebase/auth";
-import{ signInWithGoogleRedirect ,signInWithGooglePopup, createUserDocumentFromAuth, auth} from "../../../utils/firebase/firebase.utils"
+import{ /*signInWithGoogleRedirect, auth*/} from "../../../utils/firebase/firebase.utils"
+import SignInForm from "../../sign-in-form/sign-in-form.component";
 //import { async } from "@firebase/util";
+import "./authentication.styles.scss"
 
-
-const SignIn = () => {
+const Authentication = () => {
 
     //useEffect(() => {
         // ES5 måten, siden ES6 ikke fungerte???
@@ -19,23 +20,13 @@ const SignIn = () => {
     // } hentDataFraEnRedirect();
     // }, []);
 
-    const  logGoogleUser = async () => {
-        const {user} = await signInWithGooglePopup();
-        createUserDocumentFromAuth(user);
-        const userDocRef = await createUserDocumentFromAuth(user);
-
-        console.log(user);
-    }
-
-
     return(
-        <div>
-            <h1>Sign in Page</h1>
-            <button onClick={logGoogleUser}>Sign in with Google Popup</button>
+        <div className="authentication-container">
+            <SignInForm />
             {/* <button onClick={signInWithGoogleRedirect}>Sign in with Google Redirect</button> */}
             <SignUpForm />
         </div>
     )
 }
 
-export default SignIn;
+export default Authentication;
