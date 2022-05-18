@@ -1,6 +1,7 @@
-import { signOut } from "firebase/auth";
+//import { signOut } from "firebase/auth";
 import { createContext, useState, useEffect } from "react";
-import { createUserDocumentFromAuth, onAuthStateChangedListener, signOutUser } from "../utils/firebase/firebase.utils";
+import { createUserDocumentFromAuth, onAuthStateChangedListener, /*signOutUser*/ } from "../utils/firebase/firebase.utils";
+import SHOP_DATA from "../shop-data.json"
 
 //As the actual value you want to access
 export const UserContext = createContext({
@@ -12,7 +13,8 @@ export const UserContext = createContext({
 export const UserProvider = ({children}) => {
 
     const [currentUser, setCurrentUser] = useState(null);
-    const value = {currentUser, setCurrentUser};
+    const valueUser = {currentUser, setCurrentUser};
+
 
     useEffect (()=> {
         const unsubrscribe = onAuthStateChangedListener((user) => {
@@ -27,5 +29,5 @@ export const UserProvider = ({children}) => {
         return unsubrscribe
     }, [])
 
-    return <UserContext.Provider value={value}>{children}</UserContext.Provider>
+    return <UserContext.Provider value={valueUser} >{children}</UserContext.Provider>
 }
