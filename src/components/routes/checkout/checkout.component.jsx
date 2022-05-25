@@ -5,8 +5,9 @@ import "./checkout.styles.scss"
 
 const Checkout = () => {
     
-    const {cartItems} = useContext(CartListContext);
+    const {cartItems,  totalPrice} = useContext(CartListContext);
     
+
     return(
         <div className="checkoutcontainer">
             <table>
@@ -27,7 +28,7 @@ const Checkout = () => {
 
                 </tbody>
             </table>
-            <span className="total-price">Total: </span>
+            <span className="total-price">Total: ${totalPrice}</span>
         </div>
     )
 }

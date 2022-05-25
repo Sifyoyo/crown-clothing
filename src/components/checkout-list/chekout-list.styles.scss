@@ -5,4 +5,21 @@
             height: auto;
         }
     }
+
+    .checkout-quantity{
+
+
+        .incDec{
+            cursor: pointer;
+            font-size: 25px;
+            padding: 10px;
+        }
+    }
+
+    .Removebutton{
+        cursor: pointer;
+        font-size: 25px;
+
+        background-color: rgb(231, 129, 129);
+    }
 }

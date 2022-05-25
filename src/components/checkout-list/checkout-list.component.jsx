@@ -30,7 +30,7 @@ const CheckoutList = ({checkoutList})  => {
         <tr className="checkout-item-row">
             <td className="checkout-img"><img src={`${imageUrl}`}/></td>
             <td className="checkout-name">{name}</td>
-            <td className="checkout-quantity"><span onClick={RemoveOneProduct}>-</span>{quantity}<span onClick={AddProduct}>+</span></td>
+            <td className="checkout-quantity"><span className="incDec" onClick={RemoveOneProduct}>-</span><span className="quantity">{quantity}</span><span className="incDec" onClick={AddProduct}>+</span></td>
             <td className="checkout-price">${price}</td>
             <td onClick={RemoveProduct} className="Removebutton">&#10005;</td>
         </tr>
