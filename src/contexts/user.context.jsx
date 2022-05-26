@@ -1,7 +1,7 @@
 //import { signOut } from "firebase/auth";
 import { createContext, useState, useEffect } from "react";
 import { createUserDocumentFromAuth, onAuthStateChangedListener, /*signOutUser*/ } from "../utils/firebase/firebase.utils";
-import SHOP_DATA from "../shop-data.json"
+import SHOP_DATA from "../shop-data.js"
 
 //As the actual value you want to access
 export const UserContext = createContext({
