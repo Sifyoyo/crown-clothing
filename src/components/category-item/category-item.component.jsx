@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import "./category-item.styles.scss"
 
 const CategoryItem = ({category}) => {
@@ -5,7 +6,8 @@ const CategoryItem = ({category}) => {
     const {imageUrl, title} = category;
 
     return (
-        <div className="category-container" >
+      <Fragment>
+            <div className="category-container-item" >
             <div className="background-image" style={{
               backgroundImage: `url(${imageUrl})`
             }}/>
@@ -14,6 +16,8 @@ const CategoryItem = ({category}) => {
                 <p>Show Now</p>
             </div>
           </div> 
+      </Fragment>
+
     )
 }
 
