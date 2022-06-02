@@ -1,7 +1,7 @@
 import { CartListContext } from "../../../contexts/cart-list.context";
 import { useContext } from "react";
 import CheckoutList from "../../checkout-list/checkout-list.component";
-import "./checkout.styles.scss"
+import {CheckoutTable, CheckoutTr, CheckoutTotalPrice} from "./checkout.styles.jsx"
 
 const Checkout = () => {
     
@@ -10,15 +10,15 @@ const Checkout = () => {
 
     return(
         <div className="checkoutcontainer">
-            <table>
+            <CheckoutTable>
                 <thead>
-                    <tr>
+                    <CheckoutTr>
                     <td>Product</td>
                     <td>Description</td>
                     <td>Quantity</td>
                     <td>Price</td>
                     <td>Remove</td>
-                    </tr>
+                    </CheckoutTr>
                 </thead>
                 <tbody className="listOverProducts">
         
@@ -27,8 +27,8 @@ const Checkout = () => {
                 })}
 
                 </tbody>
-            </table>
-            <span className="total-price">Total: ${totalPrice}</span>
+            </CheckoutTable>
+            <CheckoutTotalPrice>Total: ${totalPrice}</CheckoutTotalPrice>
         </div>
     )
 }

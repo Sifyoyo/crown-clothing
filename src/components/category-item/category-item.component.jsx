@@ -1,23 +1,27 @@
-import { Fragment } from "react";
-import "./category-item.styles.scss"
+import { Fragment } from "react"
+import { Link } from "react-router-dom";
+import {CategoryHomeLink, CategoryContainerItem, BackgroundImage, CategoryBodyContainer, CategoryTitles, CategorySubtitles} from "./category-item.styles.jsx"
 
 const CategoryItem = ({category}) => {
 
     const {imageUrl, title} = category;
 
     return (
+      <CategoryHomeLink to={`/shop/${title.toLowerCase()}`}>
       <Fragment>
-            <div className="category-container-item" >
-            <div className="background-image" style={{
+            <CategoryContainerItem >
+            <BackgroundImage style={{
               backgroundImage: `url(${imageUrl})`
             }}/>
-              <div className="category-body-container">
-                <h2>{title}</h2>
-                <p>Show Now</p>
-            </div>
-          </div> 
-      </Fragment>
 
+            <CategoryBodyContainer>
+                <CategoryTitles>{title.toUpperCase()}</CategoryTitles>
+                <CategorySubtitles>Show Now</CategorySubtitles>
+            </CategoryBodyContainer>
+
+          </CategoryContainerItem> 
+      </Fragment>
+      </CategoryHomeLink>
     )
 }
 

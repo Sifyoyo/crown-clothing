@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { CartListContext } from "../../contexts/cart-list.context";
-import "./chekout-list.styles.scss"
+import {CheckoutImg, IncrementDecrementSymbol, RemoveAllButton, CheckoutTr} from "./chekout-list.styles.jsx"
+
 
 
 const CheckoutList = ({checkoutList})  => {
@@ -27,13 +28,13 @@ const CheckoutList = ({checkoutList})  => {
     // }
 
     return(
-        <tr className="checkout-item-row">
-            <td className="checkout-img"><img src={`${imageUrl}`}/></td>
+        <CheckoutTr>
+            <td className="checkout-img"><CheckoutImg src={`${imageUrl}`}/></td>
             <td className="checkout-name">{name}</td>
-            <td className="checkout-quantity"><span className="incDec" onClick={RemoveOneProduct}>-</span><span className="quantity">{quantity}</span><span className="incDec" onClick={AddProduct}>+</span></td>
+            <td className="checkout-quantity"><IncrementDecrementSymbol onClick={RemoveOneProduct}>-</IncrementDecrementSymbol><span className="quantity">{quantity}</span><IncrementDecrementSymbol onClick={AddProduct}>+</IncrementDecrementSymbol></td>
             <td className="checkout-price">${price}</td>
-            <td onClick={RemoveProduct} className="Removebutton">&#10005;</td>
-        </tr>
+            <RemoveAllButton onClick={RemoveProduct}>&#10005;</RemoveAllButton>
+        </CheckoutTr>
 
 )
 }
