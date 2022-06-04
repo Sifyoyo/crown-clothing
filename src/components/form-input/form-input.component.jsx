@@ -6,7 +6,7 @@ const FormInput = ({label, ...otherProps}) => {
             <FormInputField {...otherProps}/>
             {label && (
 
-            <FormInputLabel className={`${otherProps.value.length ? "shrink" : ""}`}>{label}</FormInputLabel>)}
+            <FormInputLabel shrihnk={otherProps.value.length} /*className={`${otherProps.value.length ? "shrink" : ""}`}*/>{label}</FormInputLabel>)}
                 
         </FormSingleContainer>
     )

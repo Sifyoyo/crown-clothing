@@ -3,6 +3,10 @@ import { Link } from "react-router-dom"
 
 export const CategoryHomeLink = styled(Link)`
    min-width: 33%;
+   
+   &:nth-child(4), &:nth-child(5){
+         width: 50%;
+   }
 `
 
 
@@ -11,6 +15,7 @@ export const BackgroundImage = styled.div`
       height: 100%;
       background-size: cover;
       background-position: center;
+      background-image: ${({imageUrl}) => `url(${imageUrl})`}
 `
 
 export const CategoryBodyContainer = styled.div`
@@ -24,6 +29,8 @@ export const CategoryBodyContainer = styled.div`
       background-color: white;
       opacity: 0.7;
       position: absolute;
+      max-width: 125px;
+      min-width: 125px;
 `
 
 export const CategoryContainerItem = styled.div`
@@ -36,6 +43,7 @@ export const CategoryContainerItem = styled.div`
     border: 1px solid black;
     margin: 0 7.5px 15px;
     overflow: hidden;
+
 
     &:hover{
         cursor: pointer;

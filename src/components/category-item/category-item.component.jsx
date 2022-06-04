@@ -1,18 +1,21 @@
 import { Fragment } from "react"
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import {CategoryHomeLink, CategoryContainerItem, BackgroundImage, CategoryBodyContainer, CategoryTitles, CategorySubtitles} from "./category-item.styles.jsx"
 
 const CategoryItem = ({category}) => {
 
-    const {imageUrl, title} = category;
+    const {imageUrl, title, route} = category;
+
+    const navigate = useNavigate();
+
+    const onNavigateHandler = () => navigate(route)
 
     return (
-      <CategoryHomeLink to={`/shop/${title.toLowerCase()}`}>
+      // <CategoryHomeLink to={`/shop/${title.toLowerCase()}`}>  //Mark: made a link
       <Fragment>
-            <CategoryContainerItem >
-            <BackgroundImage style={{
-              backgroundImage: `url(${imageUrl})`
-            }}/>
+            <CategoryContainerItem onClick={onNavigateHandler}>
+            <BackgroundImage imageUrl={imageUrl}/>
 
             <CategoryBodyContainer>
                 <CategoryTitles>{title.toUpperCase()}</CategoryTitles>
@@ -21,7 +24,7 @@ const CategoryItem = ({category}) => {
 
           </CategoryContainerItem> 
       </Fragment>
-      </CategoryHomeLink>
+      // </CategoryHomeLink>
     )
 }
 
